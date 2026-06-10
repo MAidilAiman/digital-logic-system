@@ -1,0 +1,184 @@
+// Define the pins for each segment
+const int segmentB = 2; 
+const int segmentA = 3; 
+const int segmentF = 4; 
+const int segmentG = 5; 
+const int segmentE = 6; 
+const int segmentD = 7; 
+const int segmentH = 8; //DECIMAL
+const int segmentC = 9; 
+const int buttonPin = 10;      // Pin for the "Increase" button
+const int resetPin = 11;       // Pin for the "Reset" button
+int count = 0;   
+
+void setup()
+ {
+  pinMode(segmentA, OUTPUT);
+  pinMode(segmentB, OUTPUT);
+  pinMode(segmentC, OUTPUT);
+  pinMode(segmentD, OUTPUT);
+  pinMode(segmentE, OUTPUT);
+  pinMode(segmentF, OUTPUT);
+  pinMode(segmentG, OUTPUT);
+  pinMode(segmentH, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP); // Button connects pin 10 to Ground
+  pinMode(resetPin, INPUT_PULLUP);  // Reset connects pin 11 to Ground
+
+   // Show 0 at the start
+  displayNumber(count);
+
+}
+
+void loop() {
+  // Check if Reset Button is pressed
+  if (digitalRead(resetPin) == HIGH) {
+    count = 0;
+    displayNumber(count);
+    delay(200); // Debounce
+  }
+
+  // Check if Increase Button is pressed
+  if (digitalRead(buttonPin) == HIGH) 
+  {
+    count++;
+    if (count > 9)
+     {
+      count = 0; // Go back to 0 after 9
+    }
+    displayNumber(count);
+    delay(200); // Debounce delay to prevent double-counting
+  }
+}
+
+void displayNumber(int num) 
+{
+  if (num==0)
+{
+  // --- NUMBER 0 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, LOW);
+  digitalWrite(segmentF, LOW);
+  digitalWrite(segmentG, HIGH); // OFF
+  delay(200);
+}
+
+else if (num==1)
+{
+  // --- NUMBER 1 ---
+  digitalWrite(segmentA, HIGH);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, HIGH);
+  digitalWrite(segmentE, HIGH);
+  digitalWrite(segmentF, HIGH);
+  digitalWrite(segmentG, HIGH);
+  delay(200);
+}
+
+else if (num==2)
+ { // --- NUMBER 2 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, HIGH);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, LOW);
+  digitalWrite(segmentF, HIGH);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+}
+
+else if (num==3)
+{
+  // --- NUMBER 3 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, HIGH);
+  digitalWrite(segmentF, HIGH);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+}
+
+else if (num==4)
+{
+  // --- NUMBER 4 ---
+  digitalWrite(segmentA, HIGH);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, HIGH);
+  digitalWrite(segmentE, HIGH);
+  digitalWrite(segmentF, LOW);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+}
+
+else if (num==5)
+{
+  // --- NUMBER 5 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, HIGH);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, HIGH);
+  digitalWrite(segmentF, LOW);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+}
+
+else if (num==6)
+{
+  // --- NUMBER 6 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, HIGH);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, LOW);
+  digitalWrite(segmentF, LOW);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+}
+
+else if (num==7)
+{
+  // --- NUMBER 7 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, HIGH);
+  digitalWrite(segmentE, HIGH);
+  digitalWrite(segmentF, HIGH);
+  digitalWrite(segmentG, HIGH);
+  delay(200);
+}
+
+else if (num==8)
+{
+  // --- NUMBER 8 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, LOW);
+  digitalWrite(segmentF, LOW);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+}
+ 
+ else if (num==9)
+ {
+  // --- NUMBER 9 ---
+  digitalWrite(segmentA, LOW);
+  digitalWrite(segmentB, LOW);
+  digitalWrite(segmentC, LOW);
+  digitalWrite(segmentD, LOW);
+  digitalWrite(segmentE, HIGH);
+  digitalWrite(segmentF, LOW);
+  digitalWrite(segmentG, LOW);
+  delay(200);
+ }
+
+}
